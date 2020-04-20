@@ -1,20 +1,16 @@
-# This is a basic workflow to help you get started with Actions
-
-name: perday
+name: 'GitHub Actions Weather Bot'
 
 on:
+  push:
   schedule:
-  - cron: "5 * * * 1-5"
-    
+    - cron: '5 * * * *'
+
 jobs:
-  build:
+  bot:
     runs-on: ubuntu-latest
     steps:
-    - name: checkout
-      uses: actions/checkout@master
-      
-    - name: send-message
-      uses: ZjBlog/message@v1.5
-      env: 
-        MESSAGE: "小主记得填打开填工时哈~~"
-        URL: ${{ secrets.URL }}  
+      - uses: actions/checkout@v1
+      - uses: ZjBlog/message@v1.5
+        env: 
+          MESSAGE: "小主记得填打开填工时哈~~"
+          URL: ${{ secrets.URL }}  
